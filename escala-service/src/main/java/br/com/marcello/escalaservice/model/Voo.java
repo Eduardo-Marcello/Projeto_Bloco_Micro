@@ -15,8 +15,6 @@ public class Voo {
     private String destino;
     private LocalDateTime dataHoraPartida;
     private LocalDateTime dataHoraChegada;
-    private String situacao;
-    private Long situacaoId;
     private String empresa;
     private Long empresaId;
 

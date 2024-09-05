@@ -1,7 +1,7 @@
 package br.com.marcello.escalaservice.service;
 
 import br.com.marcello.escalaservice.model.Situacao;
-import br.com.marcello.escalaservice.service.feign.SituacaoClient;
+import br.com.marcello.escalaservice.service.client.SituacaoClient;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

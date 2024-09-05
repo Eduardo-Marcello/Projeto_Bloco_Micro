@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor@NoArgsConstructor
 @Entity
 @Table(name = "VOO")
+@ToString
 public class Voo {
     @NotBlank
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,15 +27,5 @@ public class Voo {
     private LocalDateTime dataHoraPartida;
     @Column(name = "data_hora_chegada")
     private LocalDateTime dataHoraChegada;
-    private String empresa;
-    @Column(name = "empresa_id")
-    private Long empresaId;
-
-    /* @ManyToOne
-    @JoinColumn(name = "status_id")
-    private Situacao situacao;
-    @ManyToOne
-    @JoinColumn(name = "empresa_id")
-    private Empresa empresa; */
 
 }

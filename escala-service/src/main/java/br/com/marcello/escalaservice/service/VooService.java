@@ -1,11 +1,10 @@
 package br.com.marcello.escalaservice.service;
 
 import br.com.marcello.escalaservice.model.Voo;
-import br.com.marcello.escalaservice.service.feign.VooClient;
+import br.com.marcello.escalaservice.service.client.VooClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClient;
 
 @Service
 @RequiredArgsConstructor

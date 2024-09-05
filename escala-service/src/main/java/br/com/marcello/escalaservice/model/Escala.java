@@ -19,7 +19,15 @@ public class Escala {
     private String id;
     private List<EscalaInfo> escalaInfo;
 
-    public String toString(){
-        return escalaInfo.toString();
+    public String ticket(){
+        return escalaInfo.getFirst().ticket();
+    }
+
+    @Override
+    public String toString() {
+        return "Escala{" +
+                "id='" + id + '\'' +
+                ", escalaInfo=" + escalaInfo.toString() +
+                '}';
     }
 }

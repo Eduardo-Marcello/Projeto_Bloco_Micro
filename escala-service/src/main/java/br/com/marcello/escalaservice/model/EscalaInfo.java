@@ -15,7 +15,19 @@ public class EscalaInfo {
     private String status;
 
 
-    public String toString(){
+    public String ticket(){
         return "Código: "+codigoVoo+", Empresa: "+empresa+", Situacao: "+status;
+    }
+
+    @Override
+    public String toString() {
+        return "EscalaInfo{" +
+                "vooId=" + vooId +
+                ", empresaId=" + empresaId +
+                ", situacaoId=" + situacaoId +
+                ", codigoVoo='" + codigoVoo + '\'' +
+                ", empresa='" + empresa + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

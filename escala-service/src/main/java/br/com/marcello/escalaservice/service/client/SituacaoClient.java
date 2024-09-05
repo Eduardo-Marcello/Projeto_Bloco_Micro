@@ -1,4 +1,4 @@
-package br.com.marcello.escalaservice.service.feign;
+package br.com.marcello.escalaservice.service.client;
 
 import br.com.marcello.escalaservice.model.Situacao;
 import org.springframework.cloud.openfeign.FeignClient;

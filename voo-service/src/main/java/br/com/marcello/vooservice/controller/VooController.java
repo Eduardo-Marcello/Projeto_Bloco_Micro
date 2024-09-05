@@ -2,6 +2,7 @@ package br.com.marcello.vooservice.controller;
 
 import br.com.marcello.vooservice.model.Voo;
 import br.com.marcello.vooservice.service.VooService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class VooController {
     }
 
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody Voo voo){
+    public ResponseEntity<?> save(@RequestBody Voo voo) throws JsonProcessingException {
         return vooService.save(voo);
     }
 
