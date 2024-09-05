@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 
 @Data
-@AllArgsConstructor@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @Builder
 public class Voo {
@@ -15,5 +15,10 @@ public class Voo {
     private String destino;
     private LocalDateTime dataHoraPartida;
     private LocalDateTime dataHoraChegada;
+
+    public Voo() {
+
+    }
+
 
 }

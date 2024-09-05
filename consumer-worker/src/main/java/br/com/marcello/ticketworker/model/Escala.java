@@ -19,7 +19,11 @@ public class Escala {
         return escalaInfo.getFirst().ticket();
     }
 
-    public String toString(){
-        return escalaInfo.toString();
+    @Override
+    public String toString() {
+        return "Escala{" +
+                "id='" + id + '\'' +
+                ", escalaInfo=" + escalaInfo +
+                '}';
     }
 }

@@ -11,6 +11,6 @@ public class TicketService {
     private final TicketClient client;
 
     public String emitirPassagem(Escala escala){
-        return client.emitirPassagem(escala).toString();
+        return String.valueOf(client.emitirPassagem(escala));
     }
 }

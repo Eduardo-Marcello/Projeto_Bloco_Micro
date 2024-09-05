@@ -14,7 +14,7 @@ public class EscalaProducer {
     private final ObjectMapper objectMapper;
 
     public void send(Escala escala) throws JsonProcessingException {
-        amqpTemplate.convertAndSend("escala.exc", "escala.rk", objectMapper.writeValueAsString(escala.toString()));
+        amqpTemplate.convertAndSend("escala.exc", "escala.rk", objectMapper.writeValueAsString(escala));
     }
 
 }

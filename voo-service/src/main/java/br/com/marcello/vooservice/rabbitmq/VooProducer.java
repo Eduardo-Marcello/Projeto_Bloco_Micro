@@ -14,6 +14,6 @@ public class VooProducer {
     private final ObjectMapper objectMapper;
 
     public void send(Voo voo) throws JsonProcessingException {
-        amqpTemplate.convertAndSend("voo.exc", "voo.rk", objectMapper.writeValueAsString(voo.toString()));
+        amqpTemplate.convertAndSend("voo.exc", "voo.rk", objectMapper.writeValueAsString(voo));
     }
 }
