@@ -1,0 +1,84 @@
+services:
+  mongo:
+    container_name: MONGO-SERVER
+    image: mongo:7-jammy
+    volumes:
+      - ./mongodb-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - airline
+  mongo-express:
+    image: mongo-express:1.0.2-20-alpine3.19
+    links:
+      - mongo
+    ports:
+      - "8099:8081"
+    networks:
+      - airline
+    depends_on:
+      - mongo
+  eureka:
+    image: eduardomarcello/eureka:latest
+    container_name: EUREKA-SERVER
+    ports:
+      - "8761:8761"
+    networks:
+      - airline
+  rabbitmq:
+    container_name: RABBITMQ
+    image: rabbitmq:3.13-management
+    volumes:
+      - ./docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ./docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    ports:
+      - "5672:15672"
+    expose:
+      - "5672:15672"
+    networks:
+      - airline
+  voo-service:
+    image: eduardomarcello/voo:latest
+    networks:
+      - airline
+    depends_on:
+      - eureka
+  situacao-service:
+    image: eduardomarcello/status:latest
+    networks:
+      - airline
+    depends_on:
+      - eureka
+  empresa-service:
+    image: eduardomarcello/empresa:latest
+    networks:
+      - airline
+    depends_on:
+      - eureka
+  escala-service:
+    image: eduardomarcello/escala:latest
+    networks:
+      - airline
+    depends_on:
+      - eureka
+      - voo-service
+      - situacao-service
+      - empresa-service
+  ticket-service:
+    image: eduardomarcello/ticket:latest
+    networks:
+      - airline
+    depends_on:
+      - eureka
+      - escala-service
+  consume-worker:
+    image: eduardomarcello/consumer
+    networks:
+      - airline
+    depends_on:
+      - eureka
+      - ticket-service
+      - escala-service
+networks:
+  airline:
+    driver: bridge
