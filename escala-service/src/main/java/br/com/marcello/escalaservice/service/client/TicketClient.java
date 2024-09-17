@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient("TICKET-SERVICE")
 public interface TicketClient {
-    @PostMapping("/")
+    @PostMapping("/emitir")
     TicketPayload emitirPassagem(@RequestBody Escala escala);
 }

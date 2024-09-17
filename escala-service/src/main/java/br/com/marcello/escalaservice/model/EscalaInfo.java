@@ -6,6 +6,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 public class EscalaInfo {
     private Long vooId;
     private Long empresaId;
@@ -19,15 +20,4 @@ public class EscalaInfo {
         return "Código: "+codigoVoo+", Empresa: "+empresa+", Situacao: "+status;
     }
 
-    @Override
-    public String toString() {
-        return "EscalaInfo{" +
-                "vooId=" + vooId +
-                ", empresaId=" + empresaId +
-                ", situacaoId=" + situacaoId +
-                ", codigoVoo='" + codigoVoo + '\'' +
-                ", empresa='" + empresa + '\'' +
-                ", status='" + status + '\'' +
-                '}';
-    }
 }

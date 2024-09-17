@@ -1,10 +1,7 @@
 package br.com.marcello.escalaservice.model;
 
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -13,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 @Document(collection = "escalas")
 public class Escala {
     @Id
@@ -23,11 +21,4 @@ public class Escala {
         return escalaInfo.getFirst().ticket();
     }
 
-    @Override
-    public String toString() {
-        return "Escala{" +
-                "id='" + id + '\'' +
-                ", escalaInfo=" + escalaInfo.toString() +
-                '}';
-    }
 }

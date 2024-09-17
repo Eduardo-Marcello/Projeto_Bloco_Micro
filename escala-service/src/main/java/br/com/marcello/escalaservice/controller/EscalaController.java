@@ -34,7 +34,7 @@ public class EscalaController {
         log.info("Escala: {}", escala);
         Escala saved = escalaService.salvar(escala);
         ticketService.emitirPassagem(saved);
-        return ResponseEntity.ok(saved.toString());
+        return ResponseEntity.ok(saved);
     }
 
     @DeleteMapping("{id}")

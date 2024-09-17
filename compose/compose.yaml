@@ -3,7 +3,7 @@ services:
     container_name: MONGO-SERVER
     image: mongo:7-jammy
     volumes:
-      - ./mongodb-data:/data/db
+      - ./mongodb-data:/data/pb
     ports:
       - "27017:27017"
     networks:
@@ -84,9 +84,9 @@ services:
   gateway:
     image: eduardomarcello/gateway
     ports:
-      - "9999:9999"
+      - "9999"
     expose:
-      - "9999:9999"
+      - "9999"
     networks:
       - airline
     depends_on:

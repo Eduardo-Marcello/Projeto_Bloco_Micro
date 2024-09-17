@@ -41,7 +41,7 @@ public class EscalaService {
             info.setCodigoVoo(voo.getCodigo());
             info.setEmpresa(empresa.getNome());
             info.setStatus(situacao.getStatus());
-            log.info("Info: {}", info.toString());
+            log.info("Info: {}", info);
             log.info("Ticket: {}", info.ticket());
             escala.setEscalaInfo(List.of(info));
             producer.send(escala);

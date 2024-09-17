@@ -21,9 +21,8 @@ import java.util.Random;
 public class TicketController {
     private final TicketService ticketService;
 
-    @PostMapping
-    public ResponseEntity<Map<String, String>> gerarTicket(@RequestBody Escala escala){
-
+    @PostMapping("emitir")
+    public ResponseEntity<?> gerarTicket(@RequestBody Escala escala){
         try {
             ticketService.emitirPassagem(escala);
         } catch (JsonProcessingException e) {
