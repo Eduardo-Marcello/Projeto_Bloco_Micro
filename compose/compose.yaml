@@ -32,9 +32,11 @@ services:
       - ./docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ./docker-conf/rabbitmq/log/:/var/log/rabbitmq
     ports:
-      - "5672:15672"
+      - "5672:5672"
+      - "15672:15672"
     expose:
-      - "5672:15672"
+      - "5672:5672"
+      - "15672:15672"
     networks:
       - airline
   voo-service:
@@ -79,6 +81,18 @@ services:
       - eureka
       - ticket-service
       - escala-service
+  gateway:
+    image: eduardomarcello/gateway
+    ports:
+      - "9999:9999"
+    expose:
+      - "9999:9999"
+    networks:
+      - airline
+    depends_on:
+      - eureka
+      - escala-service
+      - ticket-service
 networks:
   airline:
     driver: bridge

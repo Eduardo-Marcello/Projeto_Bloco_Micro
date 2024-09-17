@@ -12,6 +12,7 @@
         <module name="voo-service" />
         <module name="empresa-service" />
         <module name="consumer-worker" />
+        <module name="gateway" />
         <module name="ticket-service" />
         <module name="situacao-service" />
       </profile>
@@ -26,6 +27,7 @@
       <module name="empresa-service" options="-parameters" />
       <module name="escala-service" options="-parameters" />
       <module name="eureka-service" options="-parameters" />
+      <module name="gateway" options="-parameters" />
       <module name="situacao-service" options="-parameters" />
       <module name="ticket-service" options="-parameters" />
       <module name="ticket-worker" options="-parameters" />

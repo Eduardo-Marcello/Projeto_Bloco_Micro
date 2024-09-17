@@ -3,12 +3,12 @@ package br.com.marcello.escalaservice.service;
 import br.com.marcello.escalaservice.model.*;
 import br.com.marcello.escalaservice.rabbitMQ.EscalaProducer;
 import br.com.marcello.escalaservice.repository.EscalaRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -19,6 +19,14 @@ public class EscalaService {
     private VooService vooService;
     private SituacaoService situacaoService;
     private EscalaProducer producer;
+
+    public List<Escala> getAll() {
+        return escalaRepository.findAll();
+    }
+
+    public Optional<?> getById(String id) {
+        return Optional.of(escalaRepository.findById(id).orElseThrow());
+    }
 
     public Escala salvar(Escala escala) {
         EscalaInfo info = new EscalaInfo();
@@ -41,5 +49,14 @@ public class EscalaService {
             info.setStatus("Erro de processamento");
         }
         return escalaRepository.save(escala);
+    }
+
+    public String delete(String id) {
+        if (escalaRepository.existsById(id)) {
+            escalaRepository.deleteById(id);
+            return "Escala removida com sucesso";
+        } else {
+            return "Escala não encontrada";
+        }
     }
 }

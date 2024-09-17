@@ -6,10 +6,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/")
@@ -19,6 +18,16 @@ public class EscalaController {
     private final EscalaService escalaService;
     private final TicketService ticketService;
 
+    @GetMapping
+    public ResponseEntity<?> findAll() {
+        return ResponseEntity.ok(escalaService.getAll());
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<?> findById(@PathVariable String id) {
+        return ResponseEntity.ok(escalaService.getById(id));
+    }
+
     @PostMapping("save")
     public ResponseEntity<?> create(@RequestBody Escala escala){
         log.info("Escala gerada com sucesso com sucesso");
@@ -26,6 +35,11 @@ public class EscalaController {
         Escala saved = escalaService.salvar(escala);
         ticketService.emitirPassagem(saved);
         return ResponseEntity.ok(saved.toString());
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> delete(@PathVariable String id) {
+        return ResponseEntity.ok(escalaService.delete(id));
     }
 
 }

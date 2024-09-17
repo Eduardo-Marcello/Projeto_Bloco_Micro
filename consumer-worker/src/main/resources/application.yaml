@@ -9,3 +9,4 @@ spring:
           max-attempts: 3
           initial-interval: 5000
           multiplier: 2.0
+    host: RABBITMQ
