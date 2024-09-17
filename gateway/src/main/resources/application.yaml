@@ -1,0 +1,45 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: voos
+          uri: lb://VOO-SERVICE
+          filters:
+            - StripPrefix=1
+          predicates:
+            - Path=/voo-service/**
+        - id: status
+          uri: lb://SITUACAO-SERVICE
+          filters:
+            - StripPrefix=1
+          predicates:
+            - Path=/situacao-service/**
+        - id: empresas
+          uri: lb://EMPRESA-SERVICE
+          filters:
+            - StripPrefix=1
+          predicates:
+            - Path=/empresa-service/**
+        - id: escalas
+          uri: lb://ESCALA-SERVICE
+          filters:
+            - StripPrefix=1
+          predicates:
+            - Path=/escala-service/**
+        - id: tickets
+          uri: lb://TICKET-SERVICE
+          filters:
+            - StripPrefix=1
+          predicates:
+            - Path=/ticket-service/**
+
+  application:
+    name: gateway-service
+server:
+  port: 9999
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+  client:
+    service-url:
+      defaultZone: http://EUREKA-SERVER:8761/eureka
